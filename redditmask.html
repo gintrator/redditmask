@@ -2,19 +2,22 @@
 <head>
 <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
 
-<script src="redditjson.js">
-	$(document).ready(function() {
-		$.getJSON("http://reddit.com/.json?jsonp=?", function (json) {
-		    //alert(json.kind);
-		    $.each(json.data.children, function (i, object) {
-		    	var post = "<h4><a href =\"" + object.data.url + "\">" + object.data.title + "</a></h4>";
-		        document.write(post);
-		    });
-		});
+<script type="text/javascript">
+
+$(document).ready(function() {
+	$.getJSON("http://reddit.com/.json?jsonp=?", function (json) {
+	    $.each(json.data.children, function (i, object) {
+	    	var post = "<h4><a href =\"" + object.data.url + "\">" + object.data.title + "</a></h4>";
+	    	$("#posts").append(post);
+	        //document.write(post);
+	    });
 	});
+});
+
 </script>
 
 </head>
 <body>
+<div id="posts">First thing</div>
 </body>
 </html>
